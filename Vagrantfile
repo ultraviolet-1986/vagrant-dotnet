@@ -4,10 +4,6 @@
 # Author: William Whinn
 # Date: 30th August 2022
 
-# NOTES
-# - Based on Ubuntu 22.04 LTS.
-# - Intended to develop Dotnet Core applications.
- 
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/jammy64"
 
@@ -21,7 +17,9 @@ Vagrant.configure("2") do |config|
     vb.memory = 2048
   end
 
-  config.vm.synced_folder "../Documents/Workspace/git", "/host"
+  # Share "~/Documents/Workspace/git" with the VM.
+  # NOTE: User must create this directory or select an alternative.
+  config.vm.synced_folder "#{Dir.home}/Documents/Workspace/git", "/host"
 
   # Update/install software in VM.
   config.vm.provision "shell", inline: <<-SCRIPT
