@@ -26,6 +26,8 @@ Vagrant.configure("2") do |config|
     sudo apt update
     sudo apt full-upgrade -y
     sudo apt install -y build-essential curl dotnet6 git nano snapd vim
+    sudo apt autoremove -y
+    sudo apt clean
     sudo snap refresh
   SCRIPT
 end
